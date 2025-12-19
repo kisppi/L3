@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <style>
+        /* 全局重置与基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 头部 */
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-weight: 400;
+        }
+
+        /* 导航栏 - Flex布局 */
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            margin: 0 0.3rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        nav a.active {
+            background-color: #777;
+        }
+
+        /* 内容容器 */
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+
+        /* 卡片网格 - Grid响应式布局 */
+        .card-grid {
+            display: grid;
+            /* 大屏：3列 */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 150px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #222;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-btn:hover {
+            background-color: #555;
+        }
+
+        /* 侧边栏与主内容 - Flex布局 */
+        .side-wrap {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .main {
+            flex: 1;
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .sidebar-item a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-item a:hover {
+            color: #222;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式断点 - 明显布局变化 */
+        /* 平板：2列 + 侧边栏下移 */
+        @media (max-width: 1023px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .side-wrap {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        /* 手机：1列 + 导航换行 */
+        @media (max-width: 767px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 0.5rem 0.8rem;
+                margin: 0.2rem;
+            }
+
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            .card-img {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <h1>作业</h1>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <a href="#" class="active">首页</a>
+        <a href="#">内容</a>
+        <a href="#">展示</a>
+        <a href="#">关于</a>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <!-- 卡片网格 -->
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-img">图片</div>
+                <div class="card-content">
+                    <h3 class="card-title">卡片1</h3>
+                    <a href="#" class="card-btn">查看</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">图片</div>
+                <div class="card-content">
+                    <h3 class="card-title">卡片2</h3>
+                    <a href="#" class="card-btn">查看</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">图片</div>
+                <div class="card-content">
+                    <h3 class="card-title">卡片3</h3>
+                    <a href="#" class="card-btn">查看</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">图片</div>
+                <div class="card-content">
+                    <h3 class="card-title">卡片4</h3>
+                    <a href="#" class="card-btn">查看</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">图片</div>
+                <div class="card-content">
+                    <h3 class="card-title">卡片5</h3>
+                    <a href="#" class="card-btn">查看</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">图片</div>
+                <div class="card-content">
+                    <h3 class="card-title">卡片6</h3>
+                    <a href="#" class="card-btn">查看</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 侧边栏与主内容 -->
+        <div class="side-wrap">
+            <div class="main">
+                <h2>主内容</h2>
+            </div>
+            <div class="sidebar">
+                <h3 class="sidebar-title">侧边栏</h3>
+                <div class="sidebar-item"><a href="#">选项1</a></div>
+                <div class="sidebar-item"><a href="#">选项2</a></div>
+                <div class="sidebar-item"><a href="#">选项3</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>作业 · 响应式布局演示</p>
+    </footer>
+</body>
+</html>
